@@ -21,7 +21,21 @@ class ContactsApp < Sinatra::Base
   end
 
   get "/" do
-    "Hello week 5"
+      erb :root
   end
 
+  get "/login" do
+    erb :login
+  end
+
+  post "/" do
+    user_array = @user_database.all.select{|user|
+      user[:username] == params[:username] && user[:password] == params[:password]
+    }
+    if user_array != []
+      erb :sign_in
+    else
+      erb :root
+    end
+  end
 end
