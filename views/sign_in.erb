@@ -2,4 +2,4 @@
 
 <a href= '/'>Sign Out</a>
 
-<%= @contact_database.all %>
+<%= @contact_database.find_for_user([:user_id] => params[:username]) %>
